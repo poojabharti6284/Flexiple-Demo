@@ -757,32 +757,32 @@
 (function () {
   'use strict';
 
-  const faqContainer = document.querySelector('.faq__list');
-  if (!faqContainer) return;
+  const faqLists = document.querySelectorAll('.faq__list');
 
-  const questions = faqContainer.querySelectorAll('.faq__question');
+  faqLists.forEach(faqContainer => {
+    const questions = faqContainer.querySelectorAll('.faq__question');
 
-  questions.forEach(question => {
-    question.addEventListener('click', () => {
-      const isExpanded = question.getAttribute('aria-expanded') === 'true';
-      const answerId = question.getAttribute('aria-controls');
-      const answer = document.getElementById(answerId);
+    questions.forEach(question => {
+      question.addEventListener('click', () => {
+        const isExpanded = question.getAttribute('aria-expanded') === 'true';
+        const answerId = question.getAttribute('aria-controls');
+        // We don't strictly *need* to get the answer element by ID if we trust the sibling structure,
+        // but it's good practice for aria compliance. 
+        // The CSS relies on the aria-expanded attribute on the button.
 
-      // Close all other items
-      questions.forEach(otherQuestion => {
-        if (otherQuestion !== question) {
-          otherQuestion.setAttribute('aria-expanded', 'false');
-          // For the answer, we rely on CSS sibling selector or we can explicitly set it
-          // But our CSS uses .faq__question[aria-expanded="true"] + .faq__answer
-          // So setting aria-expanded on the button is enough to trigger CSS transition
-        }
+        // Close all other items IN THIS LIST
+        questions.forEach(otherQuestion => {
+          if (otherQuestion !== question) {
+            otherQuestion.setAttribute('aria-expanded', 'false');
+          }
+        });
+
+        // Toggle current item
+        question.setAttribute('aria-expanded', !isExpanded);
       });
-
-      // Toggle current item
-      question.setAttribute('aria-expanded', !isExpanded);
     });
   });
 
-  console.log('FAQ Accordion initialized');
+  console.log(`FAQ Accordion initialized for ${faqLists.length} lists`);
 
 })();
