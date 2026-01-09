@@ -1,102 +1,4 @@
 /* ==========================================================================
-   Flexiple Navbar & Mega Menu Styles
-   
-   Table of Contents:
-   1. CSS Custom Properties (Design Tokens)
-   2. CSS Reset & Base Styles
-   3. Typography
-   4. Header & Navbar
-   5. Navigation Items
-   6. Mega Menu Base
-   7. Mega Menu - For Companies (Cards)
-   8. Mega Menu - For Talent & Products (Layout)
-   9. Mega Sections (Left Column)
-   10. Pills (Skill Tags)
-   11. CTA Buttons
-   12. Transitions & Animations
-   13. Responsive Styles
-   ========================================================================== */
-
-/* ==========================================================================
-   1. CSS Custom Properties (Design Tokens)
-   ========================================================================== */
-
-:root {
-  /* Colors - Primary */
-  --color-bg-primary: #0d0d0d;
-  --color-bg-secondary: #1a1a1a;
-  --color-bg-card: #1c1c1c;
-  --color-bg-card-hover: #252525;
-
-  /* Colors - Navbar Gradient */
-  --color-navbar-gradient-start: #312E81;
-  --color-navbar-gradient-mid: #3730a3;
-  --color-navbar-gradient-end: #4c1d95;
-  --color-navbar-gradient-mid: #3730a3;
-  --color-navbar-gradient-end: #4c1d95;
-
-  /* Colors - Text */
-  --color-text-primary: #ffffff;
-  --color-text-secondary: #9ca3af;
-  --color-text-muted: #6b7280;
-
-  /* Colors - Accent */
-  --color-accent-purple: #9333ea;
-  --color-accent-purple-hover: #a855f7;
-
-  /* Colors - Border */
-  --color-border-default: #2a2a2a;
-  --color-border-subtle: #3a3a3a;
-  --color-border-pill: #404040;
-
-  /* Spacing */
-  --spacing-xs: 4px;
-  --spacing-sm: 8px;
-  --spacing-md: 12px;
-  --spacing-lg: 16px;
-  --spacing-xl: 24px;
-  --spacing-2xl: 32px;
-  --spacing-3xl: 40px;
-  --spacing-4xl: 48px;
-
-  /* Typography */
-  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-size-xs: 12px;
-  --font-size-sm: 13px;
-  --font-size-base: 14px;
-  --font-size-md: 15px;
-  --font-size-lg: 16px;
-  --font-size-xl: 18px;
-  --font-size-2xl: 20px;
-
-  --font-weight-regular: 400;
-  --font-weight-medium: 500;
-  --font-weight-semibold: 600;
-  --font-weight-bold: 700;
-
-  --line-height-tight: 1.2;
-  --line-height-normal: 1.5;
-  --line-height-relaxed: 1.6;
-
-  /* Layout */
-  --header-height: 60px;
-  --max-width: 1200px;
-  --border-radius-sm: 4px;
-  --border-radius-md: 8px;
-  --border-radius-lg: 12px;
-  --border-radius-xl: 16px;
-  --border-radius-full: 9999px;
-
-  /* Transitions */
-  --transition-fast: 150ms ease;
-  --transition-normal: 200ms ease;
-  --transition-slow: 300ms ease;
-
-  /* Shadows */
-  --shadow-menu: 0 10px 40px rgba(0, 0, 0, 0.5);
-}
-
-/* ==========================================================================
    2. CSS Reset & Base Styles
    ========================================================================== */
 
@@ -116,11 +18,33 @@ html {
 
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  /* max-width: 1248px; REMOVED */
+  width: 100%;
   font-size: 14px;
   line-height: 1.5;
   color: #ffffff;
   background-color: #0d0d0d;
   min-height: 100vh;
+  /* overflow: hidden; */
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 3px;
+  height: 3px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
 
 a {
@@ -167,10 +91,6 @@ h6 {
    ========================================================================== */
 
 .header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
   z-index: 1000;
   background: #1e3a8a;
   /* Solid color to match Hero top, or use a gradient if preferred */
@@ -179,7 +99,7 @@ h6 {
 }
 
 .header__container {
-  max-width: var(--max-width);
+  max-width: 1274px;
   margin: 0 auto;
   padding: 0 24px;
   height: 100%;
@@ -209,8 +129,8 @@ h6 {
   height: 40px;
   align-items: center;
   justify-content: center;
-  border-radius: var(--border-radius-md);
-  transition: background-color var(--transition-fast);
+  border-radius: 8px;
+  transition: background-color 150ms ease;
 }
 
 .header__mobile-toggle:hover {
@@ -233,7 +153,7 @@ h6 {
   width: 100%;
   height: 2px;
   background-color: #ffffff;
-  transition: transform var(--transition-normal);
+  transition: transform 200ms ease;
 }
 
 .hamburger::before {
@@ -277,8 +197,8 @@ h6 {
   font-size: 14px;
   font-weight: 500;
   color: #ffffff;
-  border-radius: var(--border-radius-md);
-  transition: background-color var(--transition-fast);
+  border-radius: 8px;
+  transition: background-color 150ms ease;
   white-space: nowrap;
 }
 
@@ -297,7 +217,7 @@ h6 {
 }
 
 .nav__chevron {
-  transition: transform var(--transition-normal);
+  transition: transform 200ms ease;
 }
 
 .nav__link[aria-expanded="true"] .nav__chevron {
@@ -315,7 +235,7 @@ h6 {
   height: 3px;
   background-color: #ffffff;
   border-radius: 2px;
-  transition: transform var(--transition-normal);
+  transition: transform 200ms ease;
   opacity: 0;
 }
 
@@ -337,14 +257,14 @@ h6 {
   width: 100%;
   background-color: #1a1a1a;
   border-top: 1px solid #2a2a2a;
-  box-shadow: var(--shadow-menu);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
   opacity: 0;
   visibility: hidden;
   transform: translateY(-10px);
   transition:
-    opacity var(--transition-normal),
-    visibility var(--transition-normal),
-    transform var(--transition-normal);
+    opacity 200ms ease,
+    visibility 200ms ease,
+    transform 200ms ease;
   pointer-events: none;
 }
 
@@ -357,7 +277,7 @@ h6 {
 }
 
 .mega-menu__container {
-  max-width: var(--max-width);
+  max-width: 1274px;
   margin: 0 auto;
   padding: 40px 24px;
 }
@@ -378,10 +298,10 @@ h6 {
   padding: 24px;
   background-color: #1c1c1c;
   border: 1px solid #2a2a2a;
-  border-radius: var(--border-radius-lg);
+  border-radius: 12px;
   transition:
-    background-color var(--transition-fast),
-    border-color var(--transition-fast);
+    background-color 150ms ease,
+    border-color 150ms ease;
 }
 
 .mega-card:hover {
@@ -465,8 +385,8 @@ h6 {
 .mega-section {
   display: block;
   padding: 12px 16px;
-  border-radius: var(--border-radius-md);
-  transition: background-color var(--transition-fast);
+  border-radius: 8px;
+  transition: background-color 150ms ease;
 }
 
 .mega-section:hover {
@@ -510,11 +430,11 @@ h6 {
   color: #9ca3af;
   background-color: transparent;
   border: 1px solid #404040;
-  border-radius: var(--border-radius-full);
+  border-radius: 9999px;
   transition:
-    color var(--transition-fast),
-    border-color var(--transition-fast),
-    background-color var(--transition-fast);
+    color 150ms ease,
+    border-color 150ms ease,
+    background-color 150ms ease;
   white-space: nowrap;
 }
 
@@ -548,11 +468,11 @@ h6 {
   padding: 8px 16px;
   font-size: 14px;
   font-weight: 500;
-  border-radius: var(--border-radius-full);
+  border-radius: 9999px;
   transition:
-    background-color var(--transition-fast),
-    border-color var(--transition-fast),
-    transform var(--transition-fast);
+    background-color 150ms ease,
+    border-color 150ms ease,
+    transform 150ms ease;
   white-space: nowrap;
 }
 
@@ -646,7 +566,7 @@ html {
   /* Hide desktop nav */
   .nav {
     position: fixed;
-    top: var(--header-height);
+    top: 60px;
     left: 0;
     right: 0;
     bottom: 0;
@@ -655,7 +575,7 @@ html {
     margin-left: 0;
     padding: 24px;
     transform: translateX(-100%);
-    transition: transform var(--transition-slow);
+    transition: transform 300ms ease;
     overflow-y: auto;
   }
 
@@ -689,7 +609,7 @@ html {
     box-shadow: none;
     border-top: none;
     background-color: rgba(0, 0, 0, 0.3);
-    border-radius: var(--border-radius-md);
+    border-radius: 8px;
     margin-top: 8px;
     max-height: 0;
     overflow: hidden;
@@ -756,24 +676,20 @@ html {
    Hero Section - Pixel Perfect
    ========================================================================== */
 
-.main {
-  padding-top: var(--header-height);
-}
-
 .hero {
-  /* min-height: calc(100vh - var(--header-height)); */
+  /* min-height: calc(100vh - 60px); */
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 5rem 1.5rem;
+  padding: 80px 0;
   /* Updated gradient: Indigo/Purple top fading to Black */
   background: linear-gradient(180deg, #312E81 0%, #151515 100%);
   position: relative;
 }
 
 .hero__container {
-  max-width: 66rem;
+  max-width: 1274px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -936,11 +852,11 @@ html {
 }
 
 .profiles__container {
-  max-width: 1200px;
+  max-width: 1274px;
   margin: 0 auto;
   padding: 0 20px;
   display: grid;
-  grid-template-columns: 1fr 320px;
+  grid-template-columns: 1fr 400px;
   gap: 30px;
   align-items: start;
 }
@@ -954,7 +870,7 @@ html {
 /* Sticky Sidebar */
 .profiles__sidebar {
   position: sticky;
-  top: calc(var(--header-height) + 1.5rem);
+  top: calc(60px + 1.5rem);
   height: fit-content;
 }
 
@@ -1435,8 +1351,8 @@ html {
   }
 
   .filters {
-    flex-direction: column;
-    align-items: flex-start;
+    /* flex-direction: column;
+    align-items: flex-start; */
     gap: 0.75rem;
   }
 
@@ -1474,7 +1390,7 @@ html {
 }
 
 .testimonials__container {
-  max-width: 1248px;
+  max-width: 1274px;
   margin: 0 auto;
   padding: 0 1.5rem;
 }
@@ -1779,7 +1695,7 @@ html {
 }
 
 .faq__container {
-  max-width: 1248px;
+  max-width: 1274px;
   margin: 0 auto;
   padding: 0 1.5rem;
   display: grid;
@@ -1947,7 +1863,7 @@ html {
 }
 
 .gcc-container {
-  max-width: 1200px;
+  max-width: 1274px;
   margin: 0 auto;
   padding: 0 24px;
 }
@@ -2205,11 +2121,11 @@ html {
   /* Required for sticky */
 }
 
-.gcc-container {
+/* .gcc-container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 24px;
-}
+} */
 
 .gcc-grid {
   display: grid;
@@ -2365,7 +2281,7 @@ html {
 /* Styles for Right Sticky Card */
 .gcc-sidebar {
   position: sticky;
-  top: calc(var(--header-height) + 1.5rem);
+  top: calc(60px + 1.5rem);
   height: fit-content;
 }
 
@@ -2382,7 +2298,7 @@ html {
 
 .gcc-sidebar {
   position: sticky;
-  top: calc(var(--header-height) + 1.5rem);
+  top: calc(60px + 1.5rem);
   height: fit-content;
 }
 
@@ -2515,7 +2431,7 @@ button.gb-scroll-btn {
 }
 
 .talent-pool__container {
-  max-width: 1200px;
+  max-width: 1274px;
   margin: 0 auto;
   padding: 0 24px;
   position: relative;
@@ -2638,12 +2554,17 @@ button.gb-scroll-btn {
   .talent-pool__title {
     font-size: 36px;
   }
+
+  .talent-pool__list li {
+    width: 187px;
+  }
 }
 
 @media (max-width: 640px) {
   .talent-pool__grid {
     grid-template-columns: 1fr;
     gap: 32px;
+    padding: 0;
   }
 
   .talent-pool__title {
@@ -2661,6 +2582,23 @@ button.gb-scroll-btn {
 
   .talent-pool__tab {
     font-size: 18px;
+  }
+
+  .faq__list {
+    padding: 0;
+    width: 100%;
+  }
+
+  .brands__inner img {
+    width: 40%;
+  }
+
+  .faq__link {
+    width: 270px;
+  }
+
+  ul.talent-pool__list {
+    width: 30%;
   }
 }
 
@@ -2695,7 +2633,7 @@ button.gb-scroll-btn {
 }
 
 .footer-contact__container {
-  max-width: 1200px;
+  max-width: 1274px;
   margin: 0 auto;
   padding: 0 24px;
   display: flex;
@@ -2813,8 +2751,12 @@ button.gb-scroll-btn {
   }
 
   .footer-contact__nav {
-    flex-direction: column;
+    /* flex-direction: column; */
     gap: 12px;
+  }
+
+  .footer-contact__nav a {
+    font-size: 13px;
   }
 }
 
@@ -2822,7 +2764,7 @@ button.gb-scroll-btn {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  padding: 32px 20px;
+  padding: 32px 0px;
 }
 
 .footer-section .container {
@@ -2834,4 +2776,18 @@ button.gb-scroll-btn {
 .last-footer__right a {
   padding-left: 20px;
   font-size: 16px;
+}
+
+@media (max-width: 640px) {
+  .footer {
+    justify-content: center;
+  }
+
+  .last-footer__left {
+    margin-bottom: 15px;
+  }
+
+  .last-footer__right a {
+    font-size: 10px;
+  }
 }
